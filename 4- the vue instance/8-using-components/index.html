@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="styles.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app1">
+    <h1 ref="heading" v-html="title">{{ title }}</h1>
+    <button v-on:click="show" ref="myButton">show paragraph</button>
+    <p v-if="showParagraph">This is not always visible</p>
+  </div>
+
+  <div id="app2">
+    <button @click="onChange">Change something in vue 1</button>
+    <h1>{{ title }}</h1>
+    <hello></hello>
+    <hello></hello>
+  </div>
+
+  <div id="app3"></div>
+
+  <!-- <div class="Forma2"></div> -->
+</body>
+
+<script src="app.js"></script>
+</html>

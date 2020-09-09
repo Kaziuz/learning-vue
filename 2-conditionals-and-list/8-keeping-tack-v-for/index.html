@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="style.css">
+  </link>
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <ul>
+      <!-- <li v-for="ingredient in ingredients"> -->
+      <!-- asi cogo solo el item-->
+      <li v-for="(ingredient, i) in ingredients" :key="ingredient">
+        <!-- asi cogo el item y el indice-->
+        {{ ingredient }}
+        ({{ i }})
+      </li>
+    </ul>
+    <button @click="ingredients.push('noodles')">Add new</button>
+    <!-- asi para loopera numeros-->
+    <span v-for="numbers in 10">{{ numbers }}</span>
+
+    <hr>
+    <ul>
+      <li v-for="person in persons">{{ person.name }}</li> <!-- para traer cada item -->
+    </ul>
+    <hr>
+
+    <ul>
+      <!-- asi para hacerlo como si fuera un .map en js-->
+      <li v-for="person in persons">
+        <div v-for="(value, key, index) in person"><b>{{index}}{{key}}</b>:{{value}} </div>
+      </li>
+    </ul>
+
+    <hr>
+    <template v-for="(ingredient, index) in ingredients">
+      <h1>{{ ingredient }}</h1>
+      <p>{{ index }}</p>
+    </template>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>

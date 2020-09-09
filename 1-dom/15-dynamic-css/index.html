@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .demo {
+      width: 100px;
+      height: 100px;
+      background: gray;
+      margin: 10;
+      display: inline-block;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .yellow {
+      background: yellow;
+    }
+
+    .blue {
+      background: blue
+    }
+  </style>
+  <div id="app">
+    <div class="demo" 
+      @click="attachRed = !attachRed"
+      :class="{red: attachRed}"
+    >
+     {{ value }}
+    </div>
+    <div class="demo">{{ value }}</div>
+    <div class="demo">{{ value }}</div>
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        value: 'oe',
+        attachRed: false
+      }
+    })
+  </script>
+</body>
+</html>

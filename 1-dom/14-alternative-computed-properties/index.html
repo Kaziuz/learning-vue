@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">second counter</button>
+    <p>counter: {{ counter }} | {{ secondCounter }}</p>
+    <p>result: {{ result() }} | {{ output }}</p>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        counter: 0,
+        secondCounter: 0,
+      },
+      // si queremos cachear algun dato lo ponemos aqui
+      // siemore en el computed iran tareas sincronicas
+      // que deben realiazarse ya y no dan espera
+      computed: {
+        output: function() {
+          console.log('computada')
+          return this.counter > 5 ? 'Greater 5' : 'Smaller 5'
+        } 
+      },
+      // el watcher nos permite reaccionar cuando algun dato
+      // cambia, ese dato debe de estar en data, siempre aqui ademas de escuchar o estar atento 
+      // al cambio o estado de una varible.
+      // Tambien se realizaran todas las tareas asincronicas
+      watch: {
+        counter: function(value) {
+          const vue_instance = this
+          setTimeout(() => {
+            vue_instance.counter = 0
+            console.log('vue instance', vue_instance)
+            console.log('this timeout', this)
+          }, 2000)
+        }
+      },
+      methods: {
+        result: function() {
+          console.log('methods')
+          return this.counter > 5 ? 'Greater 5' : 'Smaller 5'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

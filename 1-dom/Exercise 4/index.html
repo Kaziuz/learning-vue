@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="styles.css"></link>
+  <title>Document</title>
+</head>
+<body>
+  <div id="exercise">
+    <!-- 1) Start the Effect with the Button. The Effect should alternate the
+       "highlight" or "shrink" class on each new setInterval tick 
+       (attach respective class to the div with id "effect" below) 
+      -->
+    <div>
+      <button @click="startEffect">Start Effect</button>
+      <div
+        id="effect"
+        :class="effectClasses"
+      >
+      </div>
+    </div>
+    <!-- 2) Create a couple of CSS classes and 
+      attach them via the
+       array syntax -->
+    <div :class="[color1, color2]">I got no class :(</div>
+    <!-- 3) Let the user enter a class 
+      (create some example classes) 
+      and attach it -->
+    <div>
+      <span>enter color</span><input type="text" v-model="input_color">
+      <div class="square3" :class="input_color"></div>
+    </div>
+    <!-- 4) Let the user enter a class and enter
+       true/ false 
+      for another class 
+      (create some example classes) 
+      and attach the classes -->
+    <div>
+      <span>Enter a class</span>
+      <input type="text" v-model="style_tag"><br />
+      <span>Enter true or false</span>
+      <input type="text" v-model="flag">
+      <div class="square3" :class="add_class"></div>
+    </div>
+    <!-- 5) Repeat 3) but now with values
+       for styles 
+      (instead of class names). Attach the
+       respective styles.  -->
+    <div>
+      <input type="text" v-model="height">
+      <div class="square3" :style="{height: `${height}px`}"></div>
+    </div>
+    <!-- 6) Create a simple progress bar with setInterval and
+       style bindings. Start it by hitting the below button. -->
+    <div>
+      <button @click="startProgressbar">Start Progress</button>
+      <div class="square3" :style="{width: `${width}px`}"></div>
+      <p>{{ width }}</p>
+    </div>
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+</html>

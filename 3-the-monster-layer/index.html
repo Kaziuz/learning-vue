@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Monster Slayer</title>
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+  <div id="app">
+    <!-- top score pipe-->
+    <section class="row">
+      <div class="small-6 columns">
+        <h1 class="text-center">YOU</h1>
+        <div class="healthbar">
+          <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+            :style="{width: `${player.score}%`}">
+            {{ player.score }}
+          </div>
+        </div>
+      </div>
+      <div class="small-6 columns">
+        <h1 class="text-center">MONSTER</h1>
+        <div class="healthbar">
+          <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+            :style="{width: `${monster.score}%`}">
+            {{ monster.score }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- button start game -->
+    <section class="row controls">
+      <div class="small-12 columns" v-if="start_game === false">
+        <button id="start-game" @click="start_game = true">
+          START NEW GAME
+        </button>
+      </div>
+
+      <!-- buttons attacks and defend -->
+      <div class="small-12 columns" v-else>
+        <button id="attack" @click="attack()">ATTACK</button>
+        <button id="special-attack" @click="special()">SPECIAL ATTACK</button>
+        <button id="heal" @click="heal()">HEAL</button>
+        <button id="give-up" @click="restart()">GIVE UP</button>
+      </div>
+
+    </section>
+
+    <!-- list of details actions -->
+    <section class="row log" v-if="start_game === true && player.attack_score.length > 0">
+      <div class="small-12 columns">
+        <ul>
+          <template v-for="num1 in player.attack_score">
+            <template v-for="num2 in monster.attack_score">
+              <li>
+                <p class="player-turn">Player attack by {{ num2 }} </p>
+                <p class="monster-turn">Monster attack by {{ num1 }}</p>
+              </li>
+            </template>
+          </template>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+  <div id="app">
+      <!-- el $event es para pasar a la función el event de DOM-->
+      <button v-on:click="increase(2, $event)">Click</button>
+      <p> {{ counter }} </p>
+      <p v-on:mousemove="updateCoordinates">
+          Coordinates: {{ x }} / {{ y }}
+          - <span v-on:mousemove.stop>DEAD SPOT</span>
+      </p>
+      <input type="text" v-on:keyup.enter="alertMe" />
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        name: 'Hola Alex',
+        link: 'http://google.com',
+        finishedLink: '<a href="http://google.com">Google</a>',
+        counter: 0,
+        x: 0,
+        y: 0
+      },
+      methods:{
+        increase: function(step, e) {
+          this.counter += step
+          console.log(e)
+        },
+        updateCoordinates: function(e) {
+          this.x = e.clientX
+          this.y = e.clientY
+        },
+        alertMe: function(e) {
+          alert('oe')
+        }
+        // dummy: function(e) {
+        //   e.stopPropagation()
+        // }
+      }
+    })
+  </script>
+</body>
+</html>

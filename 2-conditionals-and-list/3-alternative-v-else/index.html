@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="style.css"></link>
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <p v-if="show">You can see me <b>oe</b></p>
+    <p v-else>Now you see me!</p>
+   
+   <template v-if="show">
+     <h1>Heading</h1>
+     <p>Inside template</p>
+   </template>
+    <p>other text</p>
+    <button @click="show = !show">Switch</button>
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+</html>

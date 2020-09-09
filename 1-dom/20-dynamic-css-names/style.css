@@ -1,0 +1,19 @@
+.demo {
+  width: 100px;
+  height: 100px;
+  background: gray;
+  margin: 10;
+  display: inline-block;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue
+}
